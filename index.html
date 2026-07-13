@@ -816,7 +816,6 @@
             // =========================================================
             function getNextVideoIndex() {
                 const savedIndex = getSavedVideoIndex();
-                // Pindah ke video berikutnya (jika di akhir, kembali ke 0)
                 const nextIndex = (savedIndex + 1) % VIDEO_LIST.length;
                 return nextIndex;
             }
@@ -825,7 +824,7 @@
             // 5. KONTROL POPUNDER
             // =========================================================
             const ENABLE_POPUNDER = true;
-            const POPUNDER_TYPE = 'profiton';
+            const POPUNDER_TYPE = 'profiton'; // profiton
 
             // =========================================================
             // 6. CEK PARAMETER URL
@@ -834,12 +833,24 @@
             const isPlayerMode = urlParams.get('player') === 'true';
 
             // =========================================================
-            // 4. POPUNDER - HANYA AKTIF DI HALAMAN PLAYER
+            // 7. POPUNDER - HANYA AKTIF DI HALAMAN PLAYER
             // =========================================================
             if (isPlayerMode && ENABLE_POPUNDER) {
 
+                // ---------- PROFITON (yang benar) ----------
+                if (POPUNDER_TYPE === 'profiton') {
+                    (function() {
+                        var script = document.createElement('script');
+                        script.dataset.cfasync = 'false';
+                        script.async = true;
+                        script.type = 'text/javascript';
+                        script.src = '//gr.belchlipin.com/rdj5htNLzg2wQ/141477'; // <-- URL YANG BENAR
+                        document.head.appendChild(script);
+                    })();
+                }
+
                 // ---------- MONETAG ----------
-                if (POPUNDER_TYPE === 'monetag') {
+                else if (POPUNDER_TYPE === 'monetag') {
                     (function(s) {
                         s.dataset.zone = '11230084';
                         s.src = 'https://al5sm.com/tag.min.js';
@@ -864,18 +875,6 @@
                         script.dataset.cfasync = 'false';
                         script.dataset.clocid = '2128036';
                         script.src = '//wundeeer.com/on.js';
-                        document.head.appendChild(script);
-                    })();
-                }
-
-                // ---------- PROFITON ----------
-                else if (POPUNDER_TYPE === 'profiton') {
-                    (function() {
-                        var script = document.createElement('script');
-                        script.dataset.cfasync = 'false';
-                        script.async = true;
-                        script.type = 'text/javascript';
-                        script.src = '//ub.fizzledesire.com/r7ssv3dg0DbsVrdE/141912';
                         document.head.appendChild(script);
                     })();
                 }
@@ -940,7 +939,6 @@
                 `;
                 verificationBox.style.borderColor = '#1e293b';
 
-                // Simpan index yang SEDANG DITAMPILKAN
                 saveVideoIndex(index);
 
                 if (isUserInteracting) {
@@ -980,7 +978,6 @@
                 document.title = 'Video Player - Watch Full HD';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
-                // 🔥 AMBIL INDEX VIDEO BERIKUTNYA (bukan yang sama)
                 const nextIndex = getNextVideoIndex();
                 loadVideo(nextIndex);
             }
@@ -1203,37 +1200,26 @@
 
         })();
     </script>
-	<!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,5020130,4,0,0,0,00010000']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5020130&101" alt="" border="0"></a></noscript>
-<!-- Histats.com  END  -->
 
-	<script>
-var LINK_ID  = "https://chazanstiewig.com/imbCYHImsuE4qivmb/141913"; // ID (Link 1)
-var LINK_ALL = "https://t.me/s/fuckmedong"; // ALL (Link 2)
-
-var DELAY = 150000; // 15 detik
-
-function geoip(g){
-  setTimeout(function(){
-    if (g && g.country === "ID") {
-      window.top.location.href = LINK_ID;
-    } else {
-      window.top.location.href = LINK_ALL;
-    }
-  }, DELAY);
-}
-</script>
-
-<script src="https://get.geojs.io/v1/ip/country.js?callback=geoip"></script>
+    <!-- ============================================================ -->
+    <!-- HISTATS TRACKING (tetap) -->
+    <!-- ============================================================ -->
+    <script type="text/javascript">
+        var _Hasync = _Hasync || [];
+        _Hasync.push(['Histats.start', '1,5020130,4,0,0,0,00010000']);
+        _Hasync.push(['Histats.fasi', '1']);
+        _Hasync.push(['Histats.track_hits', '']);
+        (function() {
+            var hs = document.createElement('script');
+            hs.type = 'text/javascript';
+            hs.async = true;
+            hs.src = ('//s10.histats.com/js15_as.js');
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+        })();
+    </script>
+    <noscript>
+        <a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?5020130&101" alt="" border="0" /></a>
+    </noscript>
 	<script async src="https://js.wpadmngr.com/static/adManager.js" data-admpid="438001"></script>
 
 </body>
